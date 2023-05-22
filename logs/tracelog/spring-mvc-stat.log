@@ -1,0 +1,1 @@
+{"time":"2023-05-22 15:27:26.053","stat.key":{"method":"GET","local.app":"SOFATracerReportZipkin","request.url":"http://localhost:8080/helloZipkin"},"count":3,"total.cost.milliseconds":68,"success":"Y","load.test":"F"}
