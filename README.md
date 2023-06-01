@@ -13,6 +13,9 @@ This repository provides a simple example of how to generate trace telelemetry i
 SOFATracer is only available from `SOFARPC 5.4.0` -  https://github.com/sofastack/sofa-rpc/releases/tag/v5.4.0
 
 
+---
+
+
 ## SofaTracer Example
 
 The [repository](https://www.sofastack.tech/en/projects/sofa-tracer/report-to-zipkin) demonstrate a simple example of send trace information to a zipkin endpoint.
@@ -33,6 +36,46 @@ The [repository](https://www.sofastack.tech/en/projects/sofa-tracer/report-to-zi
 
 ![](./images/trace2.png)
 
+---
 
+## Working With Log4j2
 
+### Issue 1 
+
+The log is not showing the `traceId` and `spanId` information. 
+
+### Resolution
+
+The `pom.xml` needs to be carefully configured. Spring boot by default will use its in built logging library. We need to exclude this library and manually add the `log4j2` library
+
+Disable spring logging library
+
+```xml
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter</artifactId>
+   <exclusions>
+       <exclusion>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-logging</artifactId>
+       </exclusion>
+   </exclusions>
+</dependency>
+```
+
+Manually add the `log4j2` library
+
+```xml
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-log4j2</artifactId>
+</dependency>
+```
+
+Sample log output
+
+```text
+2023-06-01 17:00:51.641  INFO [0a3880c61685610051605100184931,0] ---- MDC information
+```
+---
 
