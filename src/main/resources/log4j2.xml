@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %5p [%X{SOFA-TraceId},%X{SOFA-SpanId}] ---- %m%n" />
+        </Console>
+        <File name="File" fileName="./logs/test.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %5p [%X{SOFA-TraceId},%X{SOFA-SpanId}] ---- %m%n" />
+        </File>
+    </Appenders>
+    <Loggers>
+        <root level="info">
+            <AppenderRef ref="CONSOLE"/>
+            <AppenderRef ref="File"/>
+        </root>
+    </Loggers>
+</configuration>
